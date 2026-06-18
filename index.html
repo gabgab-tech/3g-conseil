@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3G Conseil — La comptabilité simplifiée</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #242424;
+  --graphite: #363636;
+  --sage:     #4A7C6F;
+  --sage-lt:  #6FA396;
+  --bg:       #F4F4F4;
+  --white:    #FFFFFF;
+  --line:     #E0E0E0;
+  --stone:    #6b6b6b;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  padding: 0 5vw;
+  display: flex; justify-content: space-between; align-items: center;
+  height: 62px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 500; color: var(--white);
+  letter-spacing: 0.02em;
+}
+.nav-brand span { color: var(--sage-lt); }
+.nav-tagline {
+  font-size: 11px; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em; font-style: italic;
+  font-family: 'Playfair Display', serif;
+}
+.nav-cta {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--sage-lt); text-decoration: none;
+  border: 1px solid var(--sage);
+  padding: 8px 16px;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--sage); color: var(--white); }
+
+/* SECTIONS */
+section { padding: 88px 5vw; }
+section.alt { background: var(--bg); }
+
+.eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 16px;
+}
+
+/* HERO */
+.hero {
+  min-height: 90vh; display: flex; flex-direction: column;
+  justify-content: center; padding: 100px 5vw 80px;
+  background: var(--ink); color: var(--white);
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+  background: var(--sage);
+}
+.hero .eyebrow { color: var(--sage-lt); }
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 76px);
+  font-weight: 400; line-height: 1.1;
+  max-width: 820px; margin-bottom: 28px; color: var(--white);
+}
+.hero-headline em { font-style: italic; color: var(--sage-lt); }
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.6);
+  max-width: 540px; line-height: 1.7; margin-bottom: 40px;
+}
+.hero-promise {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: clamp(14px, 1.5vw, 17px);
+  color: var(--sage-lt); margin-bottom: 36px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  padding: 6px 14px; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.55);
+}
+
+/* SITUATIONS */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400; line-height: 1.25;
+  max-width: 640px; margin-bottom: 40px;
+}
+.situations-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+}
+.situation-item {
+  background: var(--white); padding: 28px 24px;
+  font-size: 14px; line-height: 1.65; color: var(--graphite);
+}
+.situation-item::before {
+  content: '—'; display: block;
+  color: var(--sage); font-size: 20px; margin-bottom: 10px;
+}
+
+/* PHILOSOPHIE */
+.philo-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+.philo-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.4; color: var(--ink);
+  border-left: 3px solid var(--sage); padding-left: 24px;
+}
+.philo-text { font-size: 15px; color: var(--stone); line-height: 1.8; }
+.philo-text p + p { margin-top: 16px; }
+.philo-text strong { color: var(--ink); font-weight: 600; }
+
+/* SERVICES */
+.services-intro {
+  max-width: 580px; margin-bottom: 40px;
+  font-size: 15px; color: var(--stone); line-height: 1.7;
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.service-card {
+  background: var(--white); border: 1px solid var(--line); padding: 28px 24px;
+}
+.service-card.featured { border-color: var(--sage); border-width: 1.5px; }
+.service-num {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+  color: var(--sage); margin-bottom: 12px;
+}
+.service-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--ink); margin-bottom: 10px; line-height: 1.3;
+}
+.service-desc { font-size: 13.5px; color: var(--stone); line-height: 1.65; }
+
+/* LIVRABLES */
+.livrables-intro {
+  max-width: 560px; margin-bottom: 36px;
+  font-size: 15px; color: var(--stone); line-height: 1.7;
+}
+.livrables-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+.livrable-item {
+  background: var(--white); border: 1px solid var(--line);
+  padding: 14px 18px; display: flex; align-items: flex-start; gap: 10px;
+}
+.livrable-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sage); flex-shrink: 0; margin-top: 5px;
+}
+.livrable-name { font-size: 13px; color: var(--ink); line-height: 1.45; }
+
+/* POUR QUI */
+.secteurs-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+.secteur {
+  font-size: 13px; font-weight: 500; padding: 10px 18px;
+  border: 1.5px solid var(--ink); color: var(--ink);
+  cursor: default; transition: all 0.2s;
+}
+.secteur:hover { background: var(--ink); color: var(--white); }
+.pour-qui-note {
+  margin-top: 28px; font-size: 14px; color: var(--stone); line-height: 1.65;
+  max-width: 580px; border-left: 3px solid var(--line); padding-left: 18px;
+}
+
+/* FORMULAIRE */
+.form-intro {
+  max-width: 560px; margin-bottom: 40px;
+  font-size: 15px; color: var(--stone); line-height: 1.7;
+}
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; max-width: 720px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone);
+}
+input, select, textarea {
+  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink);
+  background: var(--white); border: 1px solid var(--line);
+  padding: 12px 14px; outline: none; transition: border-color 0.2s; width: 100%;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--sage); }
+textarea { resize: vertical; min-height: 110px; }
+select { appearance: none; cursor: pointer; }
+.form-submit { grid-column: 1 / -1; margin-top: 8px; }
+.btn {
+  display: inline-block; font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 16px 36px; background: var(--sage); color: var(--white);
+  border: none; cursor: pointer; transition: background 0.2s;
+}
+.btn:hover { background: #3a6358; }
+.form-note {
+  grid-column: 1 / -1; font-size: 12px; color: var(--stone);
+  line-height: 1.6; margin-top: 4px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: var(--white);
+  padding: 52px 5vw;
+  display: flex; justify-content: space-between;
+  align-items: flex-end; flex-wrap: wrap; gap: 24px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 400; margin-bottom: 4px;
+}
+.footer-brand span { color: var(--sage-lt); }
+.footer-slogan {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 13px;
+  color: rgba(255,255,255,0.45); margin-bottom: 12px;
+}
+.footer-contact { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,0.55); }
+.footer-contact a { color: var(--sage-lt); text-decoration: none; }
+.footer-right { text-align: right; }
+.footer-region {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.25); line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 680px) {
+  .philo-layout { grid-template-columns: 1fr; gap: 32px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full, .form-submit, .form-note { grid-column: 1; }
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+  .nav-tagline { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;flex-direction:column;gap:2px">
+    <div class="nav-brand">3G <span>Conseil</span></div>
+    <div class="nav-tagline">La comptabilité simplifiée</div>
+  </div>
+  <a class="nav-cta" href="#contact">Parlons de votre situation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Accompagnement comptable · Grand Montréal</div>
+  <h1 class="hero-headline">Vos chiffres devraient<br>travailler <em>pour vous.</em></h1>
+  <p class="hero-sub">J'aide les PME à comprendre leur comptabilité, à mettre de l'ordre dans leurs systèmes et à prendre de meilleures décisions — en travaillant avec leur réalité, pas contre elle.</p>
+  <div class="hero-promise">« Je suis là quand vous avez besoin de moi. Je pars quand vous êtes autonome. »</div>
+  <div class="hero-tags">
+    <div class="hero-tag">QBO · Sage · Excel · Sans logiciel</div>
+    <div class="hero-tag">En personne ou à distance</div>
+    <div class="hero-tag">Grand Montréal · Québec</div>
+  </div>
+</section>
+
+<!-- SITUATIONS -->
+<section id="situations">
+  <div class="eyebrow">Vous vous reconnaissez là-dedans ?</div>
+  <h2 class="section-title">Ce sont les situations que je rencontre le plus souvent.</h2>
+  <div class="situations-grid">
+    <div class="situation-item">Vous signez ce que votre comptable vous présente sans vraiment comprendre ce que ça veut dire.</div>
+    <div class="situation-item">Vous ne savez pas lesquels de vos projets ou produits sont vraiment rentables.</div>
+    <div class="situation-item">Vos chiffres arrivent aux trois mois — trop tard pour prendre de bonnes décisions.</div>
+    <div class="situation-item">Votre système comptable a été mis en place à la va-vite et personne n'a pris le temps de bien le configurer.</div>
+    <div class="situation-item">Vous démarrez et vous voulez partir du bon pied, sans tout réorganiser dans deux ans.</div>
+    <div class="situation-item">Vous avez besoin de chiffres clairs pour votre banquier, vos investisseurs ou votre propre tranquillité d'esprit.</div>
+  </div>
+</section>
+
+<!-- PHILOSOPHIE -->
+<section id="approche" class="alt">
+  <div class="eyebrow">Comment je travaille</div>
+  <div class="philo-layout">
+    <div class="philo-quote">Je règle et j'explique — jamais l'un sans l'autre.</div>
+    <div class="philo-text">
+      <p>Je commence toujours par comprendre votre réalité avant de proposer quoi que ce soit. Une évaluation initiale, des questions concrètes, une lecture de votre situation telle qu'elle est vraiment.</p>
+      <p>Ensuite, on travaille ensemble — pas à votre place. <strong>L'objectif n'est pas que vous dépendiez de moi</strong>, c'est que vous compreniez ce qui se passe dans vos chiffres et que votre équipe puisse maintenir ce qu'on a mis en place.</p>
+      <p>Je me déplace chez vous quand c'est utile. Je travaille à distance quand c'est suffisant. Si vos besoins s'élargissent, je peux vous mettre en contact avec les bons partenaires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="eyebrow">Ce que je fais</div>
+  <h2 class="section-title">Des interventions à la carte,<br>selon ce qu'on trouve ensemble.</h2>
+  <p class="services-intro">Tout commence par une évaluation initiale. Ce qu'on fait ensuite dépend de ce qu'on découvre — pas d'un forfait prédéfini.</p>
+  <div class="services-grid">
+    <div class="service-card featured">
+      <div class="service-num">01</div>
+      <div class="service-title">Mise en ordre du système comptable</div>
+      <div class="service-desc">Je regarde comment ça fonctionne vraiment, je corrige à la source et j'explique pourquoi — pour que ce qui reste en place ait du sens. Peu importe le logiciel ou le point de départ.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Analyse de rentabilité réelle</div>
+      <div class="service-desc">Par projet, par type de travail, par produit. Savoir lesquels génèrent vraiment — et avoir des chiffres sur lesquels prendre de vraies décisions d'affaires.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Formation et autonomie</div>
+      <div class="service-desc">Je montre comment faire, pas juste ce qui a été fait. L'objectif : que vous ou votre équipe compreniez le système et puissiez le maintenir sans dépendre de quelqu'un d'autre.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Dossier CPA propre</div>
+      <div class="service-desc">Un dossier annoté, structuré, organisé comme votre CPA veut le recevoir. Moins d'allers-retours, révision rapide, fin d'année sans surprise.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Budget et prévisions financières</div>
+      <div class="service-desc">Des projections réalistes à partir de vos données historiques — pour décider, convaincre votre banquier ou simplement savoir où vous vous en allez.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Démarrage structuré</div>
+      <div class="service-desc">Mettre en place une structure qui anticipe la croissance dès le début — pour ne pas tout réorganiser à chaque nouvelle étape de votre entreprise.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRABLES -->
+<section id="livrables" class="alt">
+  <div class="eyebrow">Ce que vous pouvez recevoir</div>
+  <h2 class="section-title">Des livrables concrets,<br>adaptés à votre réalité.</h2>
+  <p class="livrables-intro">Selon votre situation, ce qu'on produit ensemble peut prendre différentes formes — toujours utiles, toujours compréhensibles.</p>
+  <div class="livrables-grid">
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Rapport diagnostique</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Cartographie des processus</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Guide de procédures (numérique et imprimable)</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Bonnes pratiques adaptées à l'entreprise</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Politique IA</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Politique département finances</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Prévisions financières et budget</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Réorganisation de la charte comptable</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Comparaison de ratios à l'industrie</div></div>
+    <div class="livrable-item"><div class="livrable-dot"></div><div class="livrable-name">Préparation du crédit pourboire (restaurants et bars)</div></div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section id="pour-qui">
+  <div class="eyebrow">Pour qui</div>
+  <h2 class="section-title">Des PME qui veulent comprendre,<br>pas juste déléguer.</h2>
+  <div class="secteurs-grid">
+    <div class="secteur">Restaurants et bars</div>
+    <div class="secteur">Garages et ateliers</div>
+    <div class="secteur">Cliniques privées</div>
+    <div class="secteur">Construction</div>
+    <div class="secteur">Fabrication légère</div>
+    <div class="secteur">Services professionnels</div>
+    <div class="secteur">Commerce de détail</div>
+    <div class="secteur">OBNL et coopératives</div>
+    <div class="secteur">Entreprises en démarrage</div>
+  </div>
+  <p class="pour-qui-note">En général : entre 2 et 30 employés, sans équipe comptable interne structurée. Ce qui compte, c'est moins le secteur que la volonté de comprendre et d'améliorer.</p>
+</section>
+
+<!-- FORMULAIRE -->
+<section id="contact" class="alt">
+  <div class="eyebrow">Première conversation</div>
+  <h2 class="section-title">Parlons de votre situation.</h2>
+  <p class="form-intro">Pas d'engagement, pas de soumission automatique. Je lis ce que vous m'envoyez et je reviens vers vous pour qu'on discute de ce qui pourrait être utile.</p>
+  <form class="form-grid" onsubmit="handleSubmit(event)">
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" placeholder="Votre nom" required>
+    </div>
+    <div class="form-group">
+      <label for="entreprise">Entreprise</label>
+      <input type="text" id="entreprise" placeholder="Nom de votre entreprise">
+    </div>
+    <div class="form-group">
+      <label for="courriel">Courriel</label>
+      <input type="email" id="courriel" placeholder="vous@entreprise.com" required>
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input type="tel" id="telephone" placeholder="514 xxx-xxxx">
+    </div>
+    <div class="form-group">
+      <label for="secteur">Secteur d'activité</label>
+      <select id="secteur">
+        <option value="">— Choisir —</option>
+        <option>Restaurant / Bar</option>
+        <option>Garage / Atelier</option>
+        <option>Clinique privée</option>
+        <option>Construction</option>
+        <option>Fabrication</option>
+        <option>Services professionnels</option>
+        <option>Commerce de détail</option>
+        <option>OBNL / Coopérative</option>
+        <option>Entreprise en démarrage</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="employes">Nombre d'employés</label>
+      <select id="employes">
+        <option value="">— Choisir —</option>
+        <option>1–5</option>
+        <option>6–15</option>
+        <option>16–30</option>
+        <option>30 et plus</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="logiciel">Logiciel comptable actuel</label>
+      <select id="logiciel">
+        <option value="">— Choisir —</option>
+        <option>QuickBooks Online (QBO)</option>
+        <option>Sage</option>
+        <option>Excel</option>
+        <option>Aucun logiciel pour l'instant</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="depuis">Depuis combien de temps ?</label>
+      <select id="depuis">
+        <option value="">— Choisir —</option>
+        <option>Moins d'un an</option>
+        <option>1 à 3 ans</option>
+        <option>3 ans et plus</option>
+        <option>Je démarre</option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label for="besoin">Qu'est-ce qui vous amène ?</label>
+      <textarea id="besoin" placeholder="Décrivez brièvement votre situation ou ce que vous aimeriez améliorer. Pas besoin d'être précis — je lis entre les lignes."></textarea>
+    </div>
+    <div class="form-submit">
+      <button type="submit" class="btn">Envoyer ma situation</button>
+    </div>
+    <p class="form-note">Je réponds personnellement dans les 48 heures. Vos informations restent confidentielles.</p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">3G <span>Conseil</span></div>
+    <div class="footer-slogan">Apprenez à aimer vos livres.</div>
+    <div class="footer-contact">
+      Gabrielle Gauvreau<br>
+      <a href="mailto:gabrielle@3gconseil.ca">gabrielle@3gconseil.ca</a><br>
+      <a href="tel:5140000000">[514] xxx-xxxx</a>
+    </div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-region">Grand Montréal · Québec<br>En personne ou à distance</div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn');
+  btn.textContent = 'Message envoyé ✓';
+  btn.style.background = '#2d6a4f';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
