@@ -276,7 +276,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="eyebrow">Accompagnement comptable · Grand Montréal</div>
+  <div class="eyebrow">Consultation · Systèmes comptables · Grand Montréal</div>
   <h1 class="hero-headline">Vos chiffres devraient<br>travailler <em>pour vous.</em></h1>
   <p class="hero-sub">J'aide les PME à comprendre leur comptabilité, à mettre de l'ordre dans leurs systèmes et à prendre de meilleures décisions — en travaillant avec leur réalité, pas contre elle.</p>
   <div class="hero-promise">« Je suis là quand vous avez besoin de moi. Je pars quand vous êtes autonome. »</div>
@@ -337,7 +337,7 @@ footer {
     </div>
     <div class="service-card">
       <div class="service-num">04</div>
-      <div class="service-title">Dossier CPA propre</div>
+      <div class="service-title">Fin d'année</div>
       <div class="service-desc">Un dossier annoté, structuré, organisé comme votre CPA veut le recevoir. Moins d'allers-retours, révision rapide, fin d'année sans surprise.</div>
     </div>
     <div class="service-card">
@@ -395,7 +395,8 @@ footer {
   <div class="eyebrow">Première conversation</div>
   <h2 class="section-title">Parlons de votre situation.</h2>
   <p class="form-intro">Pas d'engagement, pas de soumission automatique. Je lis ce que vous m'envoyez et je reviens vers vous pour qu'on discute de ce qui pourrait être utile.</p>
-  <form class="form-grid" onsubmit="handleSubmit(event)">
+  <form class="form-grid" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+    <input type="hidden" name="form-name" value="contact">
     <div class="form-group">
       <label for="nom">Nom</label>
       <input type="text" id="nom" placeholder="Votre nom" required>
