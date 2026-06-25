@@ -399,23 +399,23 @@ footer {
     <input type="hidden" name="form-name" value="contact">
     <div class="form-group">
       <label for="nom">Nom</label>
-      <input type="text" id="nom" placeholder="Votre nom" required>
+      <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
     </div>
     <div class="form-group">
       <label for="entreprise">Entreprise</label>
-      <input type="text" id="entreprise" placeholder="Nom de votre entreprise">
+      <input type="text" id="entreprise" name="entreprise" placeholder="Nom de votre entreprise">
     </div>
     <div class="form-group">
       <label for="courriel">Courriel</label>
-      <input type="email" id="courriel" placeholder="vous@entreprise.com" required>
+      <input type="email" id="courriel" name="courriel" placeholder="vous@entreprise.com" required>
     </div>
     <div class="form-group">
       <label for="telephone">Téléphone</label>
-      <input type="tel" id="telephone" placeholder="514 xxx-xxxx">
+      <input type="tel" id="telephone" name="telephone" placeholder="514 xxx-xxxx">
     </div>
     <div class="form-group">
       <label for="secteur">Secteur d'activité</label>
-      <select id="secteur">
+      <select id="secteur" name="secteur">
         <option value="">— Choisir —</option>
         <option>Restaurant / Bar</option>
         <option>Garage / Atelier</option>
@@ -431,7 +431,7 @@ footer {
     </div>
     <div class="form-group">
       <label for="employes">Nombre d'employés</label>
-      <select id="employes">
+      <select id="employes" name="employes">
         <option value="">— Choisir —</option>
         <option>1–5</option>
         <option>6–15</option>
@@ -441,7 +441,7 @@ footer {
     </div>
     <div class="form-group">
       <label for="logiciel">Logiciel comptable actuel</label>
-      <select id="logiciel">
+      <select id="logiciel" name="logiciel">
         <option value="">— Choisir —</option>
         <option>QuickBooks Online (QBO)</option>
         <option>Sage</option>
@@ -452,7 +452,7 @@ footer {
     </div>
     <div class="form-group">
       <label for="depuis">Depuis combien de temps êtes-vous en affaires ?</label>
-      <select id="depuis">
+      <select id="depuis" name="depuis">
         <option value="">— Choisir —</option>
         <option>Je démarre — moins de 6 mois</option>
         <option>6 mois à 2 ans</option>
@@ -463,7 +463,7 @@ footer {
     </div>
     <div class="form-group full">
       <label for="logiciel_duree">Depuis combien de temps utilisez-vous ce logiciel comptable ?</label>
-      <select id="logiciel_duree">
+      <select id="logiciel_duree" name="logiciel_duree">
         <option value="">— Choisir —</option>
         <option>Moins d'un an</option>
         <option>1 à 3 ans</option>
@@ -473,7 +473,7 @@ footer {
     </div>
     <div class="form-group full">
       <label for="besoin">Qu'est-ce qui vous amène ?</label>
-      <textarea id="besoin" placeholder="Décrivez brièvement votre situation ou ce que vous aimeriez améliorer. Pas besoin d'être précis — je lis entre les lignes."></textarea>
+      <textarea id="besoin" name="besoin" placeholder="Décrivez brièvement votre situation ou ce que vous aimeriez améliorer. Pas besoin d'être précis — je lis entre les lignes."></textarea>
     </div>
     <div class="form-submit">
       <button type="submit" class="btn">Envoyer</button>
