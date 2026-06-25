@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -396,7 +395,7 @@ footer {
   <div class="eyebrow">Première conversation</div>
   <h2 class="section-title">Parlons de votre situation.</h2>
   <p class="form-intro">Pas d'engagement, pas de soumission automatique. Je lis ce que vous m'envoyez et je reviens vers vous pour qu'on discute de ce qui pourrait être utile.</p>
-  <form class="form-grid" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+  <form class="form-grid" name="contact" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="contact">
     <div class="form-group">
       <label for="nom">Nom</label>
@@ -452,13 +451,24 @@ footer {
       </select>
     </div>
     <div class="form-group">
-      <label for="depuis">Depuis combien de temps ?</label>
+      <label for="depuis">Depuis combien de temps êtes-vous en affaires ?</label>
       <select id="depuis">
+        <option value="">— Choisir —</option>
+        <option>Je démarre — moins de 6 mois</option>
+        <option>6 mois à 2 ans</option>
+        <option>2 à 5 ans</option>
+        <option>5 à 10 ans</option>
+        <option>Plus de 10 ans</option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label for="logiciel_duree">Depuis combien de temps utilisez-vous ce logiciel comptable ?</label>
+      <select id="logiciel_duree">
         <option value="">— Choisir —</option>
         <option>Moins d'un an</option>
         <option>1 à 3 ans</option>
         <option>3 ans et plus</option>
-        <option>Je démarre</option>
+        <option>Je n'utilise pas encore de logiciel</option>
       </select>
     </div>
     <div class="form-group full">
@@ -488,14 +498,6 @@ footer {
   </div>
 </footer>
 
-<script>
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.btn');
-  btn.textContent = 'Message envoyé ✓';
-  btn.style.background = '#2d6a4f';
-  btn.disabled = true;
-}
-</script>
+
 </body>
 </html>
